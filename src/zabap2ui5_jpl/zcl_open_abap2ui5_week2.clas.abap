@@ -18,7 +18,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_open_abap2ui5_week2 IMPLEMENTATION.
+CLASS ZCL_OPEN_ABAP2UI5_WEEK2 IMPLEMENTATION.
+
+
   METHOD z2ui5_if_app~main.
 
 
@@ -53,26 +55,5 @@ CLASS zcl_open_abap2ui5_week2 IMPLEMENTATION.
                         press = client->_event( 'BUTTON_POST' )
          )->get_root( )->xml_get( ) ) ).
 
-
-
-*    "event handling
-*    CASE client->get( )-event.
-*      WHEN 'BUTTON_POST'.
-*        client->popup_message_toast( |App executed on { input_date } by { user_name }| ).
-*    ENDCASE.
-*
-*    "view rendering
-*    client->set_next( VALUE #( xml_main = z2ui5_cl_xml_view=>factory(
-*        )->page( title = 'abap2UI5 - First Example'
-*            )->simple_form( title = 'Form Title' editable = abap_true
-*                )->content( 'form'
-*                    )->title( 'Input'
-*                    )->label( 'User'
-*                    )->input( client->_bind( user_name )
-*                    )->label( 'Date'
-*                    )->date_picker( client->_bind( input_date )
-*                    )->button( text  = 'Post' press = client->_event( 'BUTTON_POST' )
-*         )->get_root( )->xml_get( ) ) ).
   ENDMETHOD.
-
 ENDCLASS.

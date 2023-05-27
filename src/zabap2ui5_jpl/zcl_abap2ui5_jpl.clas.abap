@@ -11,7 +11,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_abap2ui5_jpl IMPLEMENTATION.
+CLASS ZCL_ABAP2UI5_JPL IMPLEMENTATION.
 
 
   METHOD if_http_service_extension~handle_request.

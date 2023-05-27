@@ -14,12 +14,14 @@ ENDCLASS.
 
 
 
-CLASS zcl_get_date_http_jpl IMPLEMENTATION.
+CLASS ZCL_GET_DATE_HTTP_JPL IMPLEMENTATION.
 
 
   METHOD if_http_service_extension~handle_request.
     response->set_text( get_html(  ) ).
   ENDMETHOD.
+
+
   METHOD get_html.
     DATA(user_formatted_name) = cl_abap_context_info=>get_user_formatted_name( ).
     DATA(system_date) = cl_abap_context_info=>get_system_date( ).
@@ -33,5 +35,4 @@ CLASS zcl_get_date_http_jpl IMPLEMENTATION.
     |</body> \n| &&
     |</html> | .
   ENDMETHOD.
-
 ENDCLASS.

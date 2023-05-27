@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_rap100_gen_data_jpl IMPLEMENTATION.
+CLASS ZCL_RAP100_GEN_DATA_JPL IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA:
       group_id   TYPE string VALUE 'JPL',

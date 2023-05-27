@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS ycl_ca_lab_hello_gitworld IMPLEMENTATION.
+CLASS YCL_CA_LAB_HELLO_GITWORLD IMPLEMENTATION.
+
+
   METHOD say_hello_to.
     rv_message = |Hello GIT World to { iv_name }|.
   ENDMETHOD.
