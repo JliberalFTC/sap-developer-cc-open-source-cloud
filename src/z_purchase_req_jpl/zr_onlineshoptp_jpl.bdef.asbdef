@@ -3,11 +3,12 @@ strict ( 1 );
 with draft;
 
 define behavior for ZR_ONLINESHOPTP_JPL alias OnlineShop
-persistent table zaonlineshop_jpl
+//persistent table zaonlineshop_jpl
 draft table ZDONLINESHOP_JPL
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
 authorization master( global )
+with unmanaged save
 
 {
   field ( readonly )
@@ -16,23 +17,33 @@ authorization master( global )
    CreatedBy,
    LastChangedAt,
    LastChangedBy,
-   LocalLastChangedAt;
+   LocalLastChangedAt,
+   PurchaseRequisition,
+   PrCreationDate,
+   DeliveryDate;
 
   field ( numbering : managed )
    OrderUUID;
 
 
   create;
-  update;
+  update(features: instance);
   delete;
 
-  draft action Edit;
+  draft action(features: instance) Edit;
   draft action Activate;
   draft action Discard;
   draft action Resume;
-  draft determine action Prepare;
 
-  mapping for ZAONLINESHOP_JPL
+   draft determine action Prepare { validation checkOrderedQuantity;  validation checkDeliveryDate;}
+         determination setInitialOrderValues on modify { create; }
+         determination calculateTotalPrice on modify { create; field Price; } //ToDo: add side-effects with 2302
+         validation checkOrderedQuantity on save { create; field OrderQuantity; }
+         validation checkDeliveryDate on save { create; field DeliveryDate; }
+         event sendPurchaseRequisitionDetails parameter zabs_purchaserequisition;
+
+    action(features:instance) createPurchaseRequisitionItem  result [1] $self;
+      mapping for ZAONLINESHOP_jpl control zsonlineshop_jpl corresponding
   {
     OrderUUID = order_uuid;
     OrderID = order_id;
