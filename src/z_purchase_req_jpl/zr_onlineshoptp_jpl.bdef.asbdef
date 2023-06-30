@@ -1,0 +1,55 @@
+managed implementation in class ZBP_ONLINESHOPTP_JPL unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZR_ONLINESHOPTP_JPL alias OnlineShop
+persistent table zaonlineshop_jpl
+draft table ZDONLINESHOP_JPL
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   OrderUUID,
+   CreatedAt,
+   CreatedBy,
+   LastChangedAt,
+   LastChangedBy,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   OrderUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZAONLINESHOP_JPL
+  {
+    OrderUUID = order_uuid;
+    OrderID = order_id;
+    OrderedItem = ordered_item;
+    Price = price;
+    TotalPrice = total_price;
+    Currency = currency;
+    OrderQuantity = order_quantity;
+    DeliveryDate = delivery_date;
+    OverallStatus = overall_status;
+    Notes = notes;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+    PurchaseRequisition = purchase_requisition;
+    PrCreationDate = pr_creation_date;
+  }
+}
