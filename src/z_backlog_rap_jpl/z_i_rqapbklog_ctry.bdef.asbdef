@@ -1,0 +1,24 @@
+managed implementation in class zcl_bp_i_rqapbklog_ctry unique;
+strict ( 1 );
+
+define behavior for z_i_rqapbklog_ctry alias Coutries
+persistent table zrapbklogt_ctry
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  field(readonly ) CountryId;
+
+  create;
+  update;
+  delete;
+
+  mapping for zrapbklogt_ctry{
+    CountryId = country_id;
+    CountryDesc = country_desc;
+    CreaDateTime = crea_date_time;
+    LchgDateTime = lchg_date_time;
+    CreaUser = crea_user;
+    LchgUser = lchg_user;
+  }
+}
