@@ -1,0 +1,82 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo:{
+        typeName: 'País',
+        typeNamePlural: 'Países',
+        title: {
+            type: #STANDARD,
+            label: 'Países'
+        }
+    }
+}
+annotate view z_c_rqapbklog_ctry with
+{
+  @UI.facet: [
+    {
+        id: 'ID País',
+        purpose: #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'ID País'
+    }
+  ]
+  @UI: {
+    lineItem: [
+        {
+            position: 10,
+            label: 'ID País',
+            importance: #HIGH
+        }
+    ]
+  }
+  CountryId;
+  @UI: {
+    lineItem: [
+        {
+            position: 20,
+            label: 'País',
+            importance: #HIGH
+        }
+    ]
+  }
+  CountryDescription;
+  @UI: {
+    lineItem: [
+        {
+            position: 30,
+            label: 'Fecha de Creación',
+            importance: #MEDIUM
+        }
+    ]
+  }
+  CreationDate;
+  @UI: {
+    lineItem: [
+        {
+            position: 40,
+            label: 'Creado por',
+            importance: #LOW
+        }
+    ]
+  }
+  CreationUser;
+  @UI: {
+    lineItem: [
+        {
+            position: 50,
+            label: 'Fecha de última modificación',
+            importance: #MEDIUM
+        }
+    ]
+  }
+  LastChangeDate;
+  @UI: {
+    lineItem: [
+        {
+            position: 60,
+            label: 'Ultima modificación por',
+            importance: #LOW
+        }
+    ]
+  }
+  LastChangeUser;
+}
