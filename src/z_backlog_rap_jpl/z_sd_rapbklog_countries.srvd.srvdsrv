@@ -1,0 +1,4 @@
+@EndUserText.label: 'RAP BACKLOG: Service def - Countries'
+define service Z_sd_rapbklog_countries {
+  expose z_c_rqapbklog_ctry;
+}
