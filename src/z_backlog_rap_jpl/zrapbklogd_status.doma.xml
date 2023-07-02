@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000003</LENG>
+    <OUTPUTLEN>000003</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Estatus</DDTEXT>
+    <DOMMASTER>E</DOMMASTER>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>NEW</DOMVALUE_L>
+     <DDTEXT>Nuevo</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>PRG</DOMVALUE_L>
+     <DDTEXT>En progreso</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>ASG</DOMVALUE_L>
+     <DDTEXT>Asignado</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>END</DOMVALUE_L>
+     <DDTEXT>Finalizado</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZRAPBKLOGD_STATUS</DOMNAME>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>CAN</DOMVALUE_L>
+     <DDTEXT>Anulado</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
