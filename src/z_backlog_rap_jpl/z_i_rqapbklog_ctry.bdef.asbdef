@@ -5,9 +5,9 @@ define behavior for z_i_rqapbklog_ctry alias Coutries
 persistent table zrapbklogt_ctry
 lock master
 authorization master ( instance )
-//etag master <field_name>
 {
-  field(readonly:update ) CountryId;
+  field( readonly:update ) CountryId;
+  field( readonly )CreaDateTime, CreaUser, LchgDateTime, LchgUser ;
 
   create;
   update;
