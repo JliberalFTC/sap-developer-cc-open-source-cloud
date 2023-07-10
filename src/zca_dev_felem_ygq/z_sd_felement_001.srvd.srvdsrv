@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definitio para Yenith'
+define service Z_sd_felement_001 {
+  expose z_c_felement001;
+}

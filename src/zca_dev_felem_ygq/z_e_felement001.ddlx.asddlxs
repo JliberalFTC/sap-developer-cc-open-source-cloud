@@ -1,0 +1,47 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo:{
+        typeName: 'Partner',
+        typeNamePlural: 'Partner',
+        title: {
+            type: #STANDARD,
+            label: 'Partners'
+        }
+    }
+}
+annotate view z_c_felement001 with
+{
+@UI: {
+    lineItem: [
+        {
+            position: 10,
+            label: 'Partner',
+            importance: #HIGH,
+            type: #FOR_ACTION, 
+            invocationGrouping: #CHANGE_SET,  
+            dataAction: 'Bloquear BP'  
+        }
+    ]
+  }
+  Partner;
+@UI: {
+    lineItem: [
+        {
+            position: 20,
+            label: 'Dirección',
+            importance: #HIGH
+        }
+    ]
+  }  
+  PartnerAddress;
+@UI: {
+    lineItem: [
+        {
+            position: 30,
+            label: 'País',
+            importance: #HIGH
+        }
+    ]
+  }  
+  PartnerCountry;
+}
