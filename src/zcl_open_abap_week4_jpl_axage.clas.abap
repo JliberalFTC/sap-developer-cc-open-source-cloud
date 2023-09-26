@@ -20,7 +20,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_open_abap_week4_jpl_axage IMPLEMENTATION.
+CLASS ZCL_OPEN_ABAP_WEEK4_JPL_AXAGE IMPLEMENTATION.
+
 
    METHOD init_game.
     engine = NEW #( ).
@@ -90,64 +91,65 @@ CLASS zcl_open_abap_week4_jpl_axage IMPLEMENTATION.
     engine->actors->add( mark_consultant ).
   ENDMETHOD.
 
+
   METHOD z2ui5_if_app~main.
-    IF check_initialized = abap_false.
-      check_initialized = abap_true.
-      command = 'MAP'.
-      init_game(  ).
-      help = engine->interprete( 'HELP' )->get( ).
-
-    ENDIF.
-
-
-    CASE client->get( )-event.
-      WHEN 'BUTTON_POST'.
-        client->popup_message_toast( |{ command } - send to the server| ).
-        DATA(result) = engine->interprete( command ).
-        result->add( |You are in the { engine->player->location->name }.| ).
-
-        IF engine->player->location->things->exists( 'RFC' ).
-          engine->mission_completed = abap_true.
-          result->add( 'Congratulations! You delivered the RFC to the developers!' ).
-        ENDIF.
-        results = |{ result->get(  ) } \n | &&  results.
-
-      WHEN 'BACK'.
-        client->nav_app_leave( client->get_app( client->get( )-id_prev_app_stack  ) ).
-    ENDCASE.
-
-    DATA(view) = z2ui5_cl_xml_view=>factory( )->shell( ).
-    DATA(page) = view->page(
-      title          = 'abap2UI5 and AXAGE - ABAP teX Adventure #2'
-      navbuttonpress = client->_event( 'BACK' )
-      shownavbutton  = abap_false
-    ).
-    page->header_content(
-         )->link(
-             text = 'Source_Code'
-             href = z2ui5_cl_xml_view=>hlp_get_source_code_url( app = me get = client->get( ) )
-             target = '_blank'
-     ).
-
-    DATA(grid) = page->grid( 'L12 M12 S12' )->content( 'layout' ).
-    grid->simple_form(
-        title = 'Axage' editable = abap_true
-        )->content( 'form'
-            )->title( 'Game Input'
-            )->label( 'Command'
-            )->input( client->_bind( command )
-            )->button(
-                text  = 'Execute Command'
-                press = client->_event( 'BUTTON_POST' ) ).
-
-    page->grid( 'L8 M8 S8' )->content( 'layout' ).
-    grid->simple_form( title = 'Game Console' editable = abap_true )->content( 'form'
-        )->code_editor( value = client->_bind( results ) editable = 'false' type = `plain_text`
-                      height = '600px'
-        )->text_area( value = client->_bind( help ) editable = 'false' growingmaxlines = '40' growing = abap_True
-                      height = '600px'
-        ).
-    client->set_next( VALUE #( xml_main = page->get_root( )->xml_get( ) ) ).
+*    IF check_initialized = abap_false.
+*      check_initialized = abap_true.
+*      command = 'MAP'.
+*      init_game(  ).
+*      help = engine->interprete( 'HELP' )->get( ).
+*
+*    ENDIF.
+*
+*
+*    CASE client->get( )-event.
+*      WHEN 'BUTTON_POST'.
+*        client->popup_message_toast( |{ command } - send to the server| ).
+*        DATA(result) = engine->interprete( command ).
+*        result->add( |You are in the { engine->player->location->name }.| ).
+*
+*        IF engine->player->location->things->exists( 'RFC' ).
+*          engine->mission_completed = abap_true.
+*          result->add( 'Congratulations! You delivered the RFC to the developers!' ).
+*        ENDIF.
+*        results = |{ result->get(  ) } \n | &&  results.
+*
+*      WHEN 'BACK'.
+*        client->nav_app_leave( client->get_app( client->get( )-id_prev_app_stack  ) ).
+*    ENDCASE.
+*
+*    DATA(view) = z2ui5_cl_xml_view=>factory( )->shell( ).
+*    DATA(page) = view->page(
+*      title          = 'abap2UI5 and AXAGE - ABAP teX Adventure #2'
+*      navbuttonpress = client->_event( 'BACK' )
+*      shownavbutton  = abap_false
+*    ).
+*    page->header_content(
+*         )->link(
+*             text = 'Source_Code'
+*             href = z2ui5_cl_xml_view=>hlp_get_source_code_url( app = me get = client->get( ) )
+*             target = '_blank'
+*     ).
+*
+*    DATA(grid) = page->grid( 'L12 M12 S12' )->content( 'layout' ).
+*    grid->simple_form(
+*        title = 'Axage' editable = abap_true
+*        )->content( 'form'
+*            )->title( 'Game Input'
+*            )->label( 'Command'
+*            )->input( client->_bind( command )
+*            )->button(
+*                text  = 'Execute Command'
+*                press = client->_event( 'BUTTON_POST' ) ).
+*
+*    page->grid( 'L8 M8 S8' )->content( 'layout' ).
+*    grid->simple_form( title = 'Game Console' editable = abap_true )->content( 'form'
+*        )->code_editor( value = client->_bind( results ) editable = 'false' type = `plain_text`
+*                      height = '600px'
+*        )->text_area( value = client->_bind( help ) editable = 'false' growingmaxlines = '40' growing = abap_True
+*                      height = '600px'
+*        ).
+*    client->set_next( VALUE #( xml_main = page->get_root( )->xml_get( ) ) ).
 
   ENDMETHOD.
 ENDCLASS.

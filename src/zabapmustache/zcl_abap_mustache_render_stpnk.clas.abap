@@ -97,7 +97,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_abap_mustache_render_stpnk IMPLEMENTATION.
+CLASS ZCL_ABAP_MUSTACHE_RENDER_STPNK IMPLEMENTATION.
 
 
   method class_constructor.

@@ -40,7 +40,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_abap_mustache_parser_stpnk IMPLEMENTATION.
+CLASS ZCL_ABAP_MUSTACHE_PARSER_STPNK IMPLEMENTATION.
 
 
   method build_token_structure.

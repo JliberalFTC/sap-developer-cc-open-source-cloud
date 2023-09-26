@@ -15,7 +15,16 @@ ENDCLASS.
 
 
 
-CLASS zcl_open_abap_week4_jpl_game IMPLEMENTATION.
+CLASS ZCL_OPEN_ABAP_WEEK4_JPL_GAME IMPLEMENTATION.
+
+
+  METHOD execute_engine_action.
+*    IF engine->player->location->things->exists( 'RFC' ).
+*      engine->mission_completed = abap_true.
+*      co_result->add( 'Congratulations! You delivered the RFC to the developers!' ).
+*    ENDIF.
+  ENDMETHOD.
+
 
   METHOD fill_engine_script.
     DATA bill_developer TYPE REF TO zcl_axage_actor.
@@ -86,12 +95,5 @@ CLASS zcl_open_abap_week4_jpl_game IMPLEMENTATION.
 
     engine->actors->add( bill_developer ).
     engine->actors->add( mark_consultant ).
-  ENDMETHOD.
-
-  METHOD execute_engine_action.
-*    IF engine->player->location->things->exists( 'RFC' ).
-*      engine->mission_completed = abap_true.
-*      co_result->add( 'Congratulations! You delivered the RFC to the developers!' ).
-*    ENDIF.
   ENDMETHOD.
 ENDCLASS.

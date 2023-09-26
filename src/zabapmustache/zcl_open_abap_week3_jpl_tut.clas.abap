@@ -21,7 +21,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_open_abap_week3_jpl_tut IMPLEMENTATION.
+CLASS ZCL_OPEN_ABAP_WEEK3_JPL_TUT IMPLEMENTATION.
+
+
   METHOD display_backlog.
     "Object creation
     DATA(lo_ctrl) = NEW zcl_open_abap_week3_jpl_tut(  ).
@@ -30,6 +32,7 @@ CLASS zcl_open_abap_week3_jpl_tut IMPLEMENTATION.
     "Process data
     lo_ctrl->process_data( ls_data ).
   ENDMETHOD.
+
 
   METHOD fill_data.
     DATA lv_time TYPE timestampl.
@@ -93,9 +96,43 @@ CLASS zcl_open_abap_week3_jpl_tut IMPLEMENTATION.
 
   ENDMETHOD.
 
+
+  METHOD get_styles.
+    DATA(lv_root_html) = 'body{font-family:"Roboto", sans-serif;font-weight: 300;font-size: 17px;font-family: "Roboto", sans-serif;background-color: #f5f5f5;width: 100vw;' &&
+                         'height: 100vh;color: #444857;display: flex;flex-direction: column;align-items: center;justify-content: center;overflow: hidden;}'.
+    DATA(lv_root_table) = 'table{width: 100%;border-collapse: collapse;padding: 15px;}tr{padding: 5px;width: 100%;}td{padding-left: 10px;padding-right: 10px;}'.
+    DATA(lv_root_tableheader) = '.tableheader{color: #fdfdfd;background-color: #444857;}'.
+    DATA(lv_root_tablerow) = '.tablerow{color: #444857;background-color: #fdfdfd;border-bottom: 1px solid #dddddd;}'.
+    r_result = |<style>{ lv_root_html }{ lv_root_table }{ lv_root_tableheader }{ lv_root_tablerow }</style>|.
+  ENDMETHOD.
+
+
   METHOD get_timestamp.
     GET TIME STAMP FIELD rv_datetime.
   ENDMETHOD.
+
+
+  METHOD if_http_service_extension~handle_request.
+    "Object creation
+    DATA(lo_ctrl) = NEW zcl_open_abap_week3_jpl_tut(  ).
+    "Fill output Data
+    DATA(ls_data) = lo_ctrl->fill_data(  ).
+    "Process data
+    DATA(lv_response) = lo_ctrl->process_data( ls_data ).
+    response->set_status( 200 ).
+    response->set_text( lv_response ).
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    "Object creation
+    DATA(lo_ctrl) = NEW zcl_open_abap_week3_jpl_tut(  ).
+    "Fill output Data
+    DATA(ls_data) = lo_ctrl->fill_data(  ).
+    "Process data
+    lo_ctrl->process_data( ls_data ).
+  ENDMETHOD.
+
 
   METHOD process_data.
     CONSTANTS c_nl TYPE abap_char1 VALUE cl_abap_char_utilities=>newline.
@@ -129,35 +166,4 @@ CLASS zcl_open_abap_week3_jpl_tut IMPLEMENTATION.
         rv_render = lo_error->get_text(  ).
     ENDTRY.
   ENDMETHOD.
-
-  METHOD if_oo_adt_classrun~main.
-    "Object creation
-    DATA(lo_ctrl) = NEW zcl_open_abap_week3_jpl_tut(  ).
-    "Fill output Data
-    DATA(ls_data) = lo_ctrl->fill_data(  ).
-    "Process data
-    lo_ctrl->process_data( ls_data ).
-  ENDMETHOD.
-
-  METHOD if_http_service_extension~handle_request.
-    "Object creation
-    DATA(lo_ctrl) = NEW zcl_open_abap_week3_jpl_tut(  ).
-    "Fill output Data
-    DATA(ls_data) = lo_ctrl->fill_data(  ).
-    "Process data
-    DATA(lv_response) = lo_ctrl->process_data( ls_data ).
-    response->set_status( 200 ).
-    response->set_text( lv_response ).
-  ENDMETHOD.
-
-
-  METHOD get_styles.
-    DATA(lv_root_html) = 'body{font-family:"Roboto", sans-serif;font-weight: 300;font-size: 17px;font-family: "Roboto", sans-serif;background-color: #f5f5f5;width: 100vw;' &&
-                         'height: 100vh;color: #444857;display: flex;flex-direction: column;align-items: center;justify-content: center;overflow: hidden;}'.
-    DATA(lv_root_table) = 'table{width: 100%;border-collapse: collapse;padding: 15px;}tr{padding: 5px;width: 100%;}td{padding-left: 10px;padding-right: 10px;}'.
-    DATA(lv_root_tableheader) = '.tableheader{color: #fdfdfd;background-color: #444857;}'.
-    DATA(lv_root_tablerow) = '.tablerow{color: #444857;background-color: #fdfdfd;border-bottom: 1px solid #dddddd;}'.
-    r_result = |<style>{ lv_root_html }{ lv_root_table }{ lv_root_tableheader }{ lv_root_tablerow }</style>|.
-  ENDMETHOD.
-
 ENDCLASS.

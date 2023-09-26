@@ -13,7 +13,16 @@ ENDCLASS.
 
 
 
-CLASS zcl_open_abap_week4_jpl_game2 IMPLEMENTATION.
+CLASS ZCL_OPEN_ABAP_WEEK4_JPL_GAME2 IMPLEMENTATION.
+
+
+  METHOD execute_engine_action.
+    IF engine->player->location->name = 'Security Department' and engine->player->location->things->exists( 'USB' ).
+      co_result->add( 'You delivered the USB to the SAP security officer!' ).
+    ENDIF.
+  ENDMETHOD.
+
+
   METHOD fill_engine_script.
     DATA actor_developer TYPE REF TO zcl_axage_actor.
     DATA actor_consultant TYPE REF TO zcl_axage_actor.
@@ -118,11 +127,4 @@ CLASS zcl_open_abap_week4_jpl_game2 IMPLEMENTATION.
     engine->actors->add( actor_consultant ).
     engine->actors->add( actor_security ).
   ENDMETHOD.
-
-  METHOD execute_engine_action.
-    IF engine->player->location->name = 'Security Department' and engine->player->location->things->exists( 'USB' ).
-      co_result->add( 'You delivered the USB to the SAP security officer!' ).
-    ENDIF.
-  ENDMETHOD.
-
 ENDCLASS.

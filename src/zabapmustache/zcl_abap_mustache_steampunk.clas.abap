@@ -84,7 +84,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_abap_mustache_steampunk IMPLEMENTATION.
+CLASS ZCL_ABAP_MUSTACHE_STEAMPUNK IMPLEMENTATION.
 
 
   method check_version_fits.
@@ -121,6 +121,7 @@ CLASS zcl_abap_mustache_steampunk IMPLEMENTATION.
         iv_timestamp_format = iv_timestamp_format
         iv_timestamp_timezone = iv_timestamp_timezone.
   endmethod. " create.
+
 
   method create_using_env.
     create object ro_instance
